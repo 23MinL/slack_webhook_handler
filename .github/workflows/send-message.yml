@@ -3,7 +3,7 @@ name: send message
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 08 * * *"  # 매 5분마다 실행 (보장 안됨)
+    - cron: "0 08 * * *"  
 
 jobs:
   send-message:
@@ -18,10 +18,10 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Compile and Run Bot
+      - name: Webhook
         run: |
-          javac Bot.java
-          java Bot
+          javac Webhook.java
+          java Webhook
         env:
           LLM_PROMPT: ${{ vars.LLM_PROMPT }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
